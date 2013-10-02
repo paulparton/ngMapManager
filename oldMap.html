@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+    <script>
+
+        $(window).load(function(){
+
+            var map, marker, mapOptions;
+
+            mapOptions={
+                center: new google.maps.LatLng(-34.0329, 151.0655),
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+            google.maps.event.addDomListener(map, 'click', function(eventDetail){
+
+                marker = new google.maps.Marker({
+                    position: eventDetail.latLng,
+                    title: "work dammit"
+                });
+
+                marker.setMap(map);
+                console.log(eventDetail);
+
+            });
+
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(-34.0329, 151.0655),
+                title: "work dammit"
+            });
+
+            marker.setMap(map);
+
+        };
+
+    </script>
+</head>
+<body>
+
+<div id='map' style="height:400px; width:600px;"></div>
+
+</body>
+</html>
